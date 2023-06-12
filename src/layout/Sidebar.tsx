@@ -4,6 +4,8 @@ import {
   Typography,
 } from '@mui/material';
 
+// hooks
+import useLanguages from '../hooks/useLanguages';
 export interface SidebarProps {
   open: boolean;
   handleClose: () => void
@@ -13,6 +15,9 @@ export interface SidebarProps {
 const Sidebar = (props: SidebarProps) => {
   /*********** Props **********/
   const {open, handleClose} = props
+
+  /*********** hooks **********/
+  const { translate } = useLanguages()
 
   return (
     <Drawer
@@ -29,7 +34,7 @@ const Sidebar = (props: SidebarProps) => {
     >
       <Box>
         <Typography>
-          Tu carrito de compras
+          {translate("shoppingCart.title")}
         </Typography>
       </Box>
     </Drawer>

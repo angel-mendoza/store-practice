@@ -5,7 +5,7 @@ import {
   Container,
   createTheme,
   ThemeProvider,
-  CssBaseline
+  CssBaseline,
 } from '@mui/material';
 
 //components
@@ -13,6 +13,7 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
 // interface
+import { Language } from '../hooks/useLanguages';
 export interface AppContainerProps {
   children: ReactNode
 }
@@ -20,6 +21,7 @@ export type Mode = 'light' | 'dark';
 
 const initialState = {
   mode: localStorage.getItem("mode") as Mode || 'light',
+  language: localStorage.getItem("language") as Language || 'en',
 };
 
 const AppContainer = (props: AppContainerProps) => {
@@ -29,7 +31,6 @@ const AppContainer = (props: AppContainerProps) => {
   /*********** State **********/
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
   const [mode, setMode] = useState<Mode>(initialState.mode);
-
 
 
   /*********** Functions **********/
@@ -63,8 +64,8 @@ const AppContainer = (props: AppContainerProps) => {
       <CssBaseline />
       <Navbar
         themeMode={mode}
-        handleToggleDarkMode={toggleColorMode}
-        handleToggleSidebar={handleToggleSidebarOnClick}
+        onToggleDarkMode={toggleColorMode}
+        onToggleSidebar={handleToggleSidebarOnClick}
       />
       <Sidebar open={openSidebar} handleClose={handleCloseSidebar} />
       <Container>
