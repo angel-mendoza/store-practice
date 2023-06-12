@@ -1,10 +1,11 @@
-import React from 'react';
+//components
+import AppContainer from './layout/AppContainer';
 
 function App() {
   return (
-    <div className="App">
-      store
-    </div>
+    <AppContainer>
+      <h1>store</h1>
+    </AppContainer>
   );
 }
 
