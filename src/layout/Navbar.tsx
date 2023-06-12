@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 // MUI
 import {
   Box,
@@ -8,22 +8,39 @@ import {
   IconButton,
   FormGroup,
   FormControlLabel,
-  Switch
+  Switch,
+  Menu,
+  MenuItem
 } from '@mui/material';
 
 //icons
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 // interface
+import { Mode } from './AppContainer';
+
 export interface NavbarProps {
+  themeMode: Mode;
+  handleToggleDarkMode: () => void
   handleToggleSidebar: () => void
 }
 
 
 const Navbar = (props: NavbarProps) => {
   /*********** Props **********/
-  const {handleToggleSidebar} = props;
+  const {themeMode,handleToggleDarkMode, handleToggleSidebar} = props;
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -41,24 +58,50 @@ const Navbar = (props: NavbarProps) => {
           <Typography className='font-title' variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Store App
           </Typography>
-          <Box>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={true}
-                    onChange={() => console.log("true")}
-                    aria-label="login switch"
-                  />
-                }
-                label={
+          <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <SettingsIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem>
                   <Box>
-                    <AccountCircle />
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Switch
+                            checked={themeMode === "dark" ? true : false}
+                            onChange={handleToggleDarkMode}
+                          />
+                        }
+                        label="Dark mode"
+                      />
+                    </FormGroup>
                   </Box>
-                }
-              />
-            </FormGroup>
-          </Box>
+                </MenuItem>
+              </Menu>
+            </div>
         </Toolbar>
       </AppBar>
     </Box>

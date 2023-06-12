@@ -9,6 +9,7 @@ export interface SidebarProps {
   handleClose: () => void
 }
 
+
 const Sidebar = (props: SidebarProps) => {
   /*********** Props **********/
   const {open, handleClose} = props
