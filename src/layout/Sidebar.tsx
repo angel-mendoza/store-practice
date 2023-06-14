@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 
 // hooks
-import useLanguages from '../hooks/useLanguages';
+import useLanguages from '@/hooks/useLanguages';
 export interface SidebarProps {
   open: boolean;
   handleClose: () => void

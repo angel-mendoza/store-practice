@@ -1,8 +1,7 @@
 //components
-import AppContainer from './layout/AppContainer';
-
+import AppContainer from '@/layout/AppContainer';
 // hooks
-import useLanguages from './hooks/useLanguages';
+import useLanguages from '@/hooks/useLanguages';
 
 function App() {
   const {translate} = useLanguages()

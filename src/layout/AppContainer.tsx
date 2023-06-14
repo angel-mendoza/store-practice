@@ -11,9 +11,10 @@ import {
 //components
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import BasicAlert from '@/components/utils/BasicAlert';
 
 // interface
-import { Language } from '../hooks/useLanguages';
+import { Language } from '@/hooks/useLanguages';
 export interface AppContainerProps {
   children: ReactNode
 }
@@ -53,6 +54,12 @@ const AppContainer = (props: AppContainerProps) => {
       createTheme({
         palette: {
           mode,
+          primary: {
+            main: "#40D4D9"
+          },
+          secondary: {
+            main: "#FFD283"
+          },
         },
       }),
     [mode],
@@ -69,6 +76,7 @@ const AppContainer = (props: AppContainerProps) => {
       />
       <Sidebar open={openSidebar} handleClose={handleCloseSidebar} />
       <Container>
+        <BasicAlert />
         { children }
       </Container>
     </ThemeProvider>
