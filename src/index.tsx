@@ -11,6 +11,9 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+if (process.env.REACT_APP_MOCK_SERVICE === 'enabled') {
+  require('./mocks/browser');
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

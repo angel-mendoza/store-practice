@@ -65,7 +65,8 @@ const useFetch = <DataT = any>({
     try {
       setIsFetching(true);
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}${url}`,
+        `/api${url}`,
+        // `${process.env.REACT_APP_API_BASE_URL}${url}`,
         { cancelToken }
       );
       setData(data);
