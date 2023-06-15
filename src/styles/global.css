@@ -12,3 +12,15 @@ html, body {
 img.logo-app{
   width: 7rem;
 }
+
+div.not-found-page{
+  width: 100%;
+  height: calc(100% - 65px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.not-found-page img{
+  width: 70%;
+}

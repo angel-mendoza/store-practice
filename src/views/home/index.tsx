@@ -1,10 +1,8 @@
-//components
-import AppContainer from '@/layout/AppContainer';
 // hooks
 import useLanguages from '@/hooks/useLanguages';
 import useFetch from '@/hooks/useFetch';
 
-function App() {
+const HomePage = () => {
   const {translate} = useLanguages()
 
   const {data} = useFetch({
@@ -13,12 +11,11 @@ function App() {
 
   console.log('data :>> ', data);
 
-
   return (
-    <AppContainer>
+    <div>
       <h1>{translate('home.title')}</h1>
-    </AppContainer>
+    </div>
   );
 }
 
-export default App;
+export default HomePage;

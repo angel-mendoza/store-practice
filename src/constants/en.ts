@@ -5,6 +5,9 @@ const en = {
     },
     shoppingCart: {
       title: "Your shopping cart"
+    },
+    button: {
+      goHome: "Go Home"
     }
   }
 }

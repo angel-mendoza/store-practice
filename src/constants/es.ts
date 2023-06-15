@@ -5,6 +5,9 @@ const es = {
     },
     shoppingCart: {
       title: "Tu carrito de compras"
+    },
+    button: {
+      goHome: "Ir a la pagina principal"
     }
   }
 }
