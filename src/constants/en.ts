@@ -7,7 +7,24 @@ const en = {
       title: "Your shopping cart"
     },
     button: {
-      goHome: "Go Home"
+      goHome: "Go Home",
+      showDetail: "Show detail",
+      addCart: "Add cart",
+    },
+    input:{
+      placeholder: {
+        find: 'find your next purchase'
+      }
+    },
+    categories:{
+      all: "All",
+      electronics: "Electronics",
+      jewelery: "Jewelery",
+      menClothing: "Men's clothing",
+      womenClothing: "Women's clothing",
+    },
+    loadings: {
+      findCategories: "searching categories"
     }
   }
 }

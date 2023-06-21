@@ -7,7 +7,24 @@ const es = {
       title: "Tu carrito de compras"
     },
     button: {
-      goHome: "Ir a la pagina principal"
+      goHome: "Ir a la pagina principal",
+      showDetail: "Ver detalle",
+      addCart: "Agregar al carrito",
+    },
+    input:{
+      placeholder: {
+        find: 'Encuentra tu proxima compra'
+      }
+    },
+    categories:{
+      all: 'Todas las categorias',
+      electronics: "Electrónica",
+      jewelery: "Joyería",
+      menClothing: "Ropa de hombre",
+      womenClothing: "Ropa de mujeres",
+    },
+    loadings: {
+      findCategories: "buscando las categorias"
     }
   }
 }

@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 html, body {
   margin: 0;
   padding: 0;
 }
 
 .font-title{
-  font-family: 'Courgette', cursive;
+  font-family: 'Lobster', cursive !important;
 }
 
 img.logo-app{
@@ -23,4 +22,26 @@ div.not-found-page{
 
 div.not-found-page img{
   width: 70%;
+}
+
+ul.list-categories {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.list-categories li {
+  float: left;
+}
+
+.list-categories li span {
+  display: block;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -20,6 +20,7 @@ export interface QueryString {
 export interface UseFetchParams {
   url: string;
   skip?: boolean;
+  resultsKey?: string;
 }
 
 interface Pagination {
@@ -45,6 +46,7 @@ export interface UseFetch {
 const useFetch = <DataT = any>({
   url: defaultUrl,
   skip = false,
+  resultsKey = 'items',
 }: UseFetchParams) => {
   const { url } = getDefaultParamsFromUrl(defaultUrl);
   // Custom hooks
@@ -65,11 +67,14 @@ const useFetch = <DataT = any>({
     try {
       setIsFetching(true);
       const { data } = await axios.get(
-        `/api${url}`,
-        // `${process.env.REACT_APP_API_BASE_URL}${url}`,
+        `${
+          process.env.REACT_APP_MOCK_SERVICE === "enabled" ?
+            process.env.REACT_APP_BASE_URL :
+            process.env.REACT_APP_API_BASE_URL
+        }/api${url}`,
         { cancelToken }
       );
-      setData(data);
+      setData(data[resultsKey]);
       setHasError(false);
     } catch (error: any) {
       if (error?.response?.status === 404) {
