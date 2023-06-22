@@ -51,7 +51,6 @@ export const responsesProduct: ResponsesProduct = {
           rate: 4.7,
           count: 500
         },
-        
       },
       {
         id: 4,

@@ -7,6 +7,7 @@ const es = {
       title: "Tu carrito de compras"
     },
     button: {
+      goBack: "Volver",
       goHome: "Ir a la pagina principal",
       showDetail: "Ver detalle",
       addCart: "Agregar al carrito",

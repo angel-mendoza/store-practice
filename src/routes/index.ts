@@ -1,5 +1,6 @@
 import HomePage from '@/views/home';
 import PageNotFount from '@/views/404';
+import DetailProduct from '@/views/product/DetailProduct';
 
 export interface RoutesParam {
   path: string,
@@ -10,6 +11,10 @@ const routes: RoutesParam[] = [
   {
     path: '/',
     component: HomePage
+  },
+  {
+    path: '/product/:id',
+    component: DetailProduct
   },
   {
     path: '*',

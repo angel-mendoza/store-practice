@@ -3,6 +3,8 @@ import { useState, ChangeEvent } from 'react';
 // MUI
 import {
   Box,
+  Tab,
+  Tabs,
   Stack,
   Button,
   Collapse,
@@ -10,8 +12,6 @@ import {
   Typography,
   InputAdornment,
   CircularProgress,
-  Tab,
-  Tabs
 } from '@mui/material';
 
 // Icons
@@ -22,6 +22,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import useLanguages from '@/hooks/useLanguages';
 import useFetch from '@/hooks/useFetch';
 
+// interface
 import {ProductCategory} from '@/interface/Products';
 
 interface ProductFiltersProps {
@@ -57,8 +58,6 @@ const ProductFilters = (props: ProductFiltersProps) => {
     setCategorySelected(value)
     onSelectCategory(value)
   };
-
-
 
   const handlechangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setFind(event.target.value)
@@ -135,20 +134,6 @@ const ProductFilters = (props: ProductFiltersProps) => {
               ))}
             </Tabs>
           </Box>
-            // <ul className='list-categories'>
-            //   {data.map(category => (
-            //     <li key={category.key} onClick={() => handleSelectCategory(category.key)}>
-            //       <Box
-            //         component="span"
-            //         sx={(theme) => ({
-            //           backgroundColor: category.key === categorySelected ? theme.palette.primary.main : theme.palette.background.paper,
-            //         })}
-            //         >
-            //         {translate(category.label)}
-            //       </Box>
-            //     </li>
-            //   ))}
-            // </ul>
           )}
       </Collapse>
     </Stack>

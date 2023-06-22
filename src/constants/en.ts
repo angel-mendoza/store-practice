@@ -7,6 +7,7 @@ const en = {
       title: "Your shopping cart"
     },
     button: {
+      goBack: "Go Back",
       goHome: "Go Home",
       showDetail: "Show detail",
       addCart: "Add cart",
