@@ -13,8 +13,9 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import BasicAlert from '@/components/utils/BasicAlert';
 
-// interface
+// hooks
 import { Language } from '@/hooks/useLanguages';
+import useRedux from '@/hooks/useRedux';
 export interface AppContainerProps {
   children: ReactNode
 }
@@ -33,6 +34,8 @@ const AppContainer = (props: AppContainerProps) => {
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
   const [mode, setMode] = useState<Mode>(initialState.mode);
 
+  /*********** hooks **********/
+  const {handleAddProductToCart, getProductsLocalStore} =useRedux();
 
   /*********** Functions **********/
   const handleToggleSidebarOnClick = () => setOpenSidebar(!openSidebar);
@@ -44,6 +47,14 @@ const AppContainer = (props: AppContainerProps) => {
   }
 
   /*********** life cycle **********/
+  useEffect(() => {
+    const shoppingCart = getProductsLocalStore();
+    if (shoppingCart.length > 0) {
+      handleAddProductToCart(shoppingCart)
+    }
+    // eslint-disable-next-line
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('mode', mode)
   }, [mode]);

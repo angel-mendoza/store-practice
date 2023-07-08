@@ -13,6 +13,7 @@ import {
   FormControl,
   InputLabel,
   Select,
+  Badge
 } from '@mui/material';
 
 //icons
@@ -27,6 +28,7 @@ import { Mode } from './AppContainer';
 
 // hooks
 import useLanguages from '@/hooks/useLanguages';
+import useRedux from '@/hooks/useRedux';
 
 export interface NavbarProps {
   themeMode: Mode;
@@ -41,8 +43,10 @@ const Navbar = (props: NavbarProps) => {
   /*********** state **********/
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
+
   /*********** hooks **********/
   const {language, handleChangeLanguage} = useLanguages()
+  const {shoppingCart} = useRedux()
 
   /*********** functions **********/
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -74,7 +78,9 @@ const Navbar = (props: NavbarProps) => {
               sx={{ mr: 2 }}
               onClick={onToggleSidebar}
             >
-              <LocalGroceryStoreIcon />
+              <Badge badgeContent={shoppingCart.products.length} color="primary">
+                <LocalGroceryStoreIcon />
+              </Badge>
             </IconButton>
             <img
               className='logo-app'

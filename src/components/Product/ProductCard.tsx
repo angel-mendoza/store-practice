@@ -11,15 +11,16 @@ import {
   Tooltip
 } from '@mui/material';
 
+// hooks
+import useRedux from '@/hooks/useRedux';
+import useLanguages from '@/hooks/useLanguages';
+
 //icons
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 // interface
 import { Product } from '@/interface/Products';
-
-// hooks
-import useLanguages from '@/hooks/useLanguages';
 
 interface ProductCardProp {
   product: Product
@@ -31,7 +32,7 @@ export default function ProductCard(props: ProductCardProp) {
 
   /*********** hooks **********/
   const {translate} = useLanguages()
-
+  const {handleAddProductToCart} = useRedux()
   return (
     <Card sx={{
       marginBottom: 2
@@ -79,7 +80,7 @@ export default function ProductCard(props: ProductCardProp) {
           </IconButton>
         </Tooltip>
         <Tooltip title={translate('button.addCart')} placement="bottom-start">
-          <IconButton aria-label={translate('button.addCart')}>
+          <IconButton aria-label={translate('button.addCart')} onClick={() => handleAddProductToCart(product)}>
             <ShoppingCartIcon />
           </IconButton>
         </Tooltip>

@@ -17,7 +17,8 @@ import {
 import UndoIcon from '@mui/icons-material/Undo';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-// interface
+// hooks
+import useRedux from '@/hooks/useRedux';
 import useLanguages from '@/hooks/useLanguages';
 
 // interface
@@ -32,8 +33,9 @@ const ProductDetail = (props: ProductDetailProps) => {
   /*********** props **********/
   const {loading, product} = props;
 
-    /*********** hooks **********/
-    const {translate} = useLanguages()
+  /*********** hooks **********/
+  const {translate} = useLanguages()
+  const {handleAddProductToCart} = useRedux()
 
   return (
     <Grid container marginTop={1} spacing={2}>
@@ -131,6 +133,7 @@ const ProductDetail = (props: ProductDetailProps) => {
                 <Button
                   variant='contained'
                   startIcon={<ShoppingCartIcon />}
+                  onClick={() => handleAddProductToCart(product)}
                 >
                   {translate('button.addCart')}
                 </Button>
